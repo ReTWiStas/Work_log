@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Jobs List</h2>
+    {% for job in jobs %}
+        <div class="job">
+            <h3>Job ID: {{ job.id }}</h3>
+            <table>
+                <tr>
+                    <th>Job Title</th>
+                    <th>Team Leader</th>
+                    <th>Duration (hours)</th>
+                    <th>Collaborators</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>{{ job.job }}</td>
+                    <td>{{ job.team_leader.surname }} {{ job.team_leader.name }}</td>
+                    <td>{{ job.work_size }}</td>
+                    <td>{{ job.collaborators }}</td>
+                    <td>{% if job.is_finished %}Finished{% else %}In Progress{% endif %}</td>
+                </tr>
+            </table>
+        </div>
+    {% endfor %}
+{% endblock %}
